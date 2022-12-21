@@ -1,5 +1,3 @@
-import readlineSync from 'readline-sync';
-
 import startNewGame from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
@@ -8,7 +6,7 @@ const signs = ['+', '-', '*'];
 const calcGame = () => {
   const firstRandomNumber = getRandomNumber(10);
   const secondRandomNumber = getRandomNumber(10);
-  const randomExpression = signs[getRandomNumber(signs.length - 1)];
+  const randomExpression = signs[getRandomNumber(signs.length)];
 
   let correctAnswer;
 

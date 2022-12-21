@@ -13,7 +13,7 @@ const startNewGame = (game) => {
     const correctAnswer = gameResult[0];
     const gameQuestion = gameResult[1];
 
-    const userAnswer = readlineSync.question(gameQuestion);
+    const userAnswer = Number(readlineSync.question(gameQuestion));
 
     console.log(`Your answer: ${userAnswer}`);
 

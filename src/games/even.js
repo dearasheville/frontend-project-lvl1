@@ -1,5 +1,3 @@
-import readlineSync from 'readline-sync';
-
 import startNewGame from '../index.js';
 import { getRandomNumber, isEven } from '../utils.js';
 
