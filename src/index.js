@@ -10,10 +10,11 @@ const startNewGame = (game) => {
   for (let i = 0; i < 3; i += 1) {
     const gameResult = game();
 
-    const correctAnswer = gameResult[0];
-    const gameQuestion = gameResult[1];
+    const [correctAnswer, gameTask, gameQuestion] = gameResult;
 
-    const userAnswer = Number(readlineSync.question(gameQuestion));
+    console.log(gameTask);
+
+    const userAnswer = readlineSync.question(gameQuestion);
 
     console.log(`Your answer: ${userAnswer}`);
 

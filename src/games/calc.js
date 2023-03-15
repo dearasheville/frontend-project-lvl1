@@ -24,11 +24,10 @@ const calcGame = () => {
       break;
   }
 
-  console.log('What is the result of the expression?');
-
+  const gameTask = 'What is the result of the expression?';
   const gameQuestion = `Question: ${firstRandomNumber} ${randomExpression} ${secondRandomNumber}\n`;
 
-  return [correctAnswer, gameQuestion];
+  return [String(correctAnswer), gameTask, gameQuestion];
 };
 
 export default () => startNewGame(calcGame);
