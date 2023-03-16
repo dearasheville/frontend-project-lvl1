@@ -1,33 +1,42 @@
 import startNewGame from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
+
+const minNumber = 1;
+const maxNumber = 10;
 
 const signs = ['+', '-', '*'];
 
-const calcGame = () => {
-  const firstRandomNumber = getRandomNumber(0, 10);
-  const secondRandomNumber = getRandomNumber(0, 10);
-  const randomExpression = signs[getRandomNumber(0, signs.length)];
+const toCalculateExpression = (firstNumber, secondNumber, expression) => {
+  let result;
 
-  let correctAnswer;
-
-  switch (randomExpression) {
+  switch (expression) {
     case '+':
-      correctAnswer = firstRandomNumber + secondRandomNumber;
+      result = firstNumber + secondNumber;
       break;
     case '-':
-      correctAnswer = firstRandomNumber - secondRandomNumber;
+      result = firstNumber - secondNumber;
       break;
     case '*':
-      correctAnswer = firstRandomNumber * secondRandomNumber;
+      result = firstNumber * secondNumber;
       break;
     default:
       break;
   }
 
-  const gameTask = 'What is the result of the expression?';
+  return result;
+};
+
+const calcGame = () => {
+  const firstRandomNumber = getRandomNumber(minNumber, maxNumber);
+  const secondRandomNumber = getRandomNumber(minNumber, maxNumber);
+  const randomExpression = signs[getRandomNumber(0, signs.length)];
+
+  const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomExpression);
+
+  const gameDescription = 'What is the result of the expression?';
   const gameQuestion = `Question: ${firstRandomNumber} ${randomExpression} ${secondRandomNumber}\n`;
 
-  return [String(correctAnswer), gameTask, gameQuestion];
+  return [String(correctAnswer), gameDescription, gameQuestion];
 };
 
 export default () => startNewGame(calcGame);

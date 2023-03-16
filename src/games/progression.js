@@ -1,31 +1,44 @@
 import startNewGame from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
 
-const progressionGame = () => {
-  const randomNumber = getRandomNumber(0, 10);
-  const progressionStep = getRandomNumber(0, 10);
-  const questionStep = getRandomNumber(0, 9);
-  let correctAnswer;
+const minNumber = 1;
+const maxNumber = 10;
 
-  let progressionAccumulator = randomNumber;
-  let progressionString = `${randomNumber}`;
+const progressionLength = getRandomNumber(5, 15);
 
-  for (let i = 0; i < 9; i += 1) {
-    progressionAccumulator += progressionStep;
+const getProgression = (initNumber, stepNumber, stepOrder) => {
+  let progressionAccumulator = initNumber;
+  let progressionString = `${initNumber}`;
 
-    if (i === questionStep) {
+  let progressionAnswer;
+
+  for (let i = 1; i < progressionLength; i += 1) {
+    progressionAccumulator += stepNumber;
+
+    if (i === stepOrder) {
       progressionString += ' ..';
 
-      correctAnswer = progressionAccumulator;
+      progressionAnswer = progressionAccumulator;
     } else {
       progressionString += ` ${progressionAccumulator}`;
     }
   }
 
-  const gameTask = 'What number is missing in the progression?';
+  return [progressionAnswer, progressionString];
+};
+
+const progressionGame = () => {
+  const progressionInitNumber = getRandomNumber(minNumber, maxNumber);
+  const progressionStepNumber = getRandomNumber(minNumber, maxNumber);
+  const questionStepOrder = getRandomNumber(minNumber, progressionLength - 1);
+  const progressionGameData = getProgression(progressionInitNumber, progressionStepNumber, questionStepOrder);
+
+  const [correctAnswer, progressionString] = progressionGameData;
+
+  const gameDescription = 'What number is missing in the progression?';
   const gameQuestion = `Question: ${progressionString}\n`;
 
-  return [String(correctAnswer), gameTask, gameQuestion];
+  return [String(correctAnswer), gameDescription, gameQuestion];
 };
 
 export default () => startNewGame(progressionGame);
