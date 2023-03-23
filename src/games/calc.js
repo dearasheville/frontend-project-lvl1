@@ -34,7 +34,7 @@ const calcGame = () => {
   const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomExpression);
 
   const gameDescription = 'What is the result of the expression?';
-  const gameQuestion = `Question: ${firstRandomNumber} ${randomExpression} ${secondRandomNumber}\n`;
+  const gameQuestion = `${firstRandomNumber} ${randomExpression} ${secondRandomNumber}`;
 
   return [String(correctAnswer), gameDescription, gameQuestion];
 };

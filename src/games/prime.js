@@ -17,7 +17,7 @@ const primeGame = () => {
   const correctAnswer = isPrime(randomNumber) ? 'yes' : 'no';
 
   const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const gameQuestion = `Question: ${randomNumber}\n`;
+  const gameQuestion = `${randomNumber}`;
 
   return [correctAnswer, gameDescription, gameQuestion];
 };

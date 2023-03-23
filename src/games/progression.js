@@ -36,7 +36,7 @@ const progressionGame = () => {
   const [correctAnswer, progressionString] = progressionGameData;
 
   const gameDescription = 'What number is missing in the progression?';
-  const gameQuestion = `Question: ${progressionString}\n`;
+  const gameQuestion = `${progressionString}`;
 
   return [String(correctAnswer), gameDescription, gameQuestion];
 };

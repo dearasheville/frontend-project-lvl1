@@ -9,7 +9,7 @@ const evenGame = () => {
   const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';
 
   const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const gameQuestion = `Question: ${randomNumber}\n`;
+  const gameQuestion = `${randomNumber}`;
 
   return [correctAnswer, gameDescription, gameQuestion];
 };

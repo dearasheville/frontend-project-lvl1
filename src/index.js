@@ -16,7 +16,7 @@ const startNewGame = (game) => {
 
     console.log(gameTask);
 
-    const userAnswer = readlineSync.question(gameQuestion);
+    const userAnswer = readlineSync.question(`Question: ${gameQuestion}\n`);
 
     console.log(`Your answer: ${userAnswer}`);
 
