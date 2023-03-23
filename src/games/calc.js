@@ -6,10 +6,10 @@ const maxNumber = 10;
 
 const signs = ['+', '-', '*'];
 
-const toCalculateExpression = (firstNumber, secondNumber, expression) => {
+const toCalculateExpression = (firstNumber, secondNumber, sign) => {
   let result;
 
-  switch (expression) {
+  switch (sign) {
     case '+':
       result = firstNumber + secondNumber;
       break;
@@ -29,12 +29,12 @@ const toCalculateExpression = (firstNumber, secondNumber, expression) => {
 const calcGame = () => {
   const firstRandomNumber = getRandomNumber(minNumber, maxNumber);
   const secondRandomNumber = getRandomNumber(minNumber, maxNumber);
-  const randomExpression = signs[getRandomNumber(0, signs.length)];
+  const randomSign = signs[getRandomNumber(0, signs.length)];
 
-  const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomExpression);
+  const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomSign);
 
   const gameDescription = 'What is the result of the expression?';
-  const gameQuestion = `${firstRandomNumber} ${randomExpression} ${secondRandomNumber}`;
+  const gameQuestion = `${firstRandomNumber} ${randomSign} ${secondRandomNumber}`;
 
   return [String(correctAnswer), gameDescription, gameQuestion];
 };
