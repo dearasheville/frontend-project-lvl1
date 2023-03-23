@@ -31,9 +31,9 @@ const progressionGame = () => {
   const progressionInitNumber = getRandomNumber(minNumber, maxNumber);
   const progressionStepNumber = getRandomNumber(minNumber, maxNumber);
   const questionStepOrder = getRandomNumber(minNumber, progressionLength - 1);
-  const progressionGameData = getProgression(progressionInitNumber, progressionStepNumber, questionStepOrder);
+  const gameData = getProgression(progressionInitNumber, progressionStepNumber, questionStepOrder);
 
-  const [correctAnswer, progressionString] = progressionGameData;
+  const [correctAnswer, progressionString] = gameData;
 
   const gameDescription = 'What number is missing in the progression?';
   const gameQuestion = `${progressionString}`;
