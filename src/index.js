@@ -7,7 +7,9 @@ const startNewGame = (game) => {
 
   console.log(`Hello, ${name}!`);
 
-  for (let i = 0; i < 3; i += 1) {
+  const gamesCount = 3;
+
+  for (let i = 0; i < gamesCount; i += 1) {
     const gameResult = game();
 
     const [correctAnswer, gameTask, gameQuestion] = gameResult;
@@ -22,15 +24,13 @@ const startNewGame = (game) => {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       console.log(`Let's try again, ${name}!`);
 
-      return false;
+      return;
     }
 
     console.log('Correct!');
   }
 
   console.log(`Congratulations, ${name}!`);
-
-  return true;
 };
 
 export default startNewGame;
