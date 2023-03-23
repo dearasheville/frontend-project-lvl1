@@ -29,7 +29,7 @@ const toCalculateExpression = (firstNumber, secondNumber, sign) => {
 const calcGame = () => {
   const firstRandomNumber = getRandomNumber(minNumber, maxNumber);
   const secondRandomNumber = getRandomNumber(minNumber, maxNumber);
-  const randomSign = signs[getRandomNumber(0, signs.length)];
+  const randomSign = signs[getRandomNumber(0, signs.length - 1)];
 
   const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomSign);
 
