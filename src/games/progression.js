@@ -1,6 +1,8 @@
 import startNewGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
+const gameDescription = 'What number is missing in the progression?';
+
 const minNumber = 1;
 const maxNumber = 10;
 
@@ -34,11 +36,9 @@ const progressionGame = () => {
   const gameData = getProgression(progressionInitNumber, progressionStepNumber, questionStepOrder);
 
   const [correctAnswer, progressionString] = gameData;
-
-  const gameDescription = 'What number is missing in the progression?';
   const gameQuestion = `${progressionString}`;
 
-  return [String(correctAnswer), gameDescription, gameQuestion];
+  return [String(correctAnswer), gameQuestion];
 };
 
-export default () => startNewGame(progressionGame);
+export default () => startNewGame(progressionGame, gameDescription);

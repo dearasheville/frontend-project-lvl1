@@ -1,6 +1,8 @@
 import startNewGame from '../index.js';
 import getRandomNumber from '../utils.js';
 
+const gameDescription = 'What is the result of the expression?';
+
 const minNumber = 1;
 const maxNumber = 10;
 
@@ -32,11 +34,9 @@ const calcGame = () => {
   const randomSign = signs[getRandomNumber(0, signs.length - 1)];
 
   const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomSign);
-
-  const gameDescription = 'What is the result of the expression?';
   const gameQuestion = `${firstRandomNumber} ${randomSign} ${secondRandomNumber}`;
 
-  return [String(correctAnswer), gameDescription, gameQuestion];
+  return [String(correctAnswer), gameQuestion];
 };
 
-export default () => startNewGame(calcGame);
+export default () => startNewGame(calcGame, gameDescription);
