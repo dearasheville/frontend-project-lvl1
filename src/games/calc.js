@@ -16,23 +16,16 @@ const getRandomSign = () => {
 };
 
 const calculateExpression = (firstNumber, secondNumber, sign) => {
-  let result;
-
   switch (sign) {
     case '+':
-      result = firstNumber + secondNumber;
-      break;
+      return firstNumber + secondNumber;
     case '-':
-      result = firstNumber - secondNumber;
-      break;
+      return firstNumber - secondNumber;
     case '*':
-      result = firstNumber * secondNumber;
-      break;
+      return firstNumber * secondNumber;
     default:
-      break;
+      throw new Error(`Operation ${sign} is not supported`);
   }
-
-  return result;
 };
 
 const calcGame = () => {
