@@ -8,7 +8,14 @@ const maxNumber = 10;
 
 const signs = ['+', '-', '*'];
 
-const toCalculateExpression = (firstNumber, secondNumber, sign) => {
+const getRandomSign = () => {
+  const signsLength = signs.length;
+  const signsIndex = Math.round(Math.random() * (signsLength - 1));
+
+  return signs[signsIndex];
+};
+
+const calculateExpression = (firstNumber, secondNumber, sign) => {
   let result;
 
   switch (sign) {
@@ -31,9 +38,9 @@ const toCalculateExpression = (firstNumber, secondNumber, sign) => {
 const calcGame = () => {
   const firstRandomNumber = getRandomNumber(minNumber, maxNumber);
   const secondRandomNumber = getRandomNumber(minNumber, maxNumber);
-  const randomSign = signs[getRandomNumber(0, signs.length - 1)];
+  const randomSign = getRandomSign();
 
-  const correctAnswer = toCalculateExpression(firstRandomNumber, secondRandomNumber, randomSign);
+  const correctAnswer = calculateExpression(firstRandomNumber, secondRandomNumber, randomSign);
   const gameQuestion = `${firstRandomNumber} ${randomSign} ${secondRandomNumber}`;
 
   return [String(correctAnswer), gameQuestion];
