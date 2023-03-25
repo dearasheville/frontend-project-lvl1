@@ -6,37 +6,29 @@ const gameDescription = 'What number is missing in the progression?';
 const minNumber = 1;
 const maxNumber = 10;
 
-const progressionLength = getRandomNumber(5, 15);
+const progressionLength = 10;
 
-const getProgression = (initNumber, stepNumber, stepOrder) => {
-  let progressionAccumulator = initNumber;
-  let progressionString = `${initNumber}`;
+const getProgression = (start, step, questionPosition) => {
+  const progression = [];
 
-  let progressionAnswer;
-
-  for (let i = 1; i < progressionLength; i += 1) {
-    progressionAccumulator += stepNumber;
-
-    if (i === stepOrder) {
-      progressionString += ' ..';
-
-      progressionAnswer = progressionAccumulator;
-    } else {
-      progressionString += ` ${progressionAccumulator}`;
-    }
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push(start + step * i);
   }
 
-  return [progressionAnswer, progressionString];
+  progression[questionPosition] = '..';
+
+  return progression.join(' ');
 };
 
 const progressionGame = () => {
-  const progressionInitNumber = getRandomNumber(minNumber, maxNumber);
-  const progressionStepNumber = getRandomNumber(minNumber, maxNumber);
-  const questionStepOrder = getRandomNumber(minNumber, progressionLength - 1);
-  const gameData = getProgression(progressionInitNumber, progressionStepNumber, questionStepOrder);
+  const progressionStart = getRandomNumber(minNumber, maxNumber);
+  const progressionStep = getRandomNumber(minNumber, maxNumber);
+  const questionPosition = getRandomNumber(minNumber, progressionLength - 1);
 
-  const [correctAnswer, progressionString] = gameData;
-  const gameQuestion = `${progressionString}`;
+  const progression = getProgression(progressionStart, progressionStep, questionPosition);
+
+  const correctAnswer = progressionStart + (progressionStep * questionPosition);
+  const gameQuestion = `${progression}`;
 
   return [String(correctAnswer), gameQuestion];
 };
